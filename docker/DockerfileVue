@@ -1,0 +1,4 @@
+# Utilisez une image Node.js appropriée
+FROM node:16
+
+CMD ["sh","entrypoint.sh"]

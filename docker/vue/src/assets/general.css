@@ -1,0 +1,116 @@
+.characterIcon
+{
+    fill:var(--secondary-color);
+    transition: 0.5s;
+}
+
+.exitButton
+{
+    background-color: transparent;
+    border:2px solid var(--main-color);
+    position: absolute;
+    top:10px;
+    right:10px;
+    border-radius: 25px;
+    width: 45px;
+    height:45px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+/* CUSTOM INPUT */
+.containerInput
+{
+    position: relative;
+    width: 500px;
+    background-color: orange;
+    height:100%;
+}
+.containerInput input
+{
+    background-color: #222;
+    border:none;
+    border-bottom: 2px solid transparent;
+    width: 100%;
+    padding:10px;
+    color:var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    transition: 0.5s;
+}
+.containerInput input:hover, .containerInput input:focus
+{
+    border-bottom: 2px solid var(--main-color);
+}
+.containerInput label
+{
+    display: block;
+    position: absolute;
+    font-size: 1.2em;
+    top:6px;
+    left: 50%;
+    color:var(--secondary-color);
+    transform:translateX(-50%);
+    transition: 0.5s;
+    pointer-events: none;
+    font-weight: bold;
+    text-anchor: middle;
+}
+.containerInput input:hover ~ label, .containerInput label.onTop, .containerInput input:focus ~ label
+{
+    top:-1em;
+    left:0px;   
+    color:var(--main-faded-color);
+    transform:translateX(0%);
+    font-size: 1em;
+}
+/* END CUSTOM INPUT */
+
+/* CUSTOM TAB */
+.tab
+{
+    /* background-color: red; */
+    height:100%;
+    position: relative;
+}
+.tabNav
+{
+    display: flex;
+    flex-direction: row;
+    height:50px;
+    border-bottom: 2px solid var(--main-color);
+    margin-bottom: 10px;
+    background-color: var(--main-background-color);
+}
+.tabLink
+{
+    background-color: var(--main-background-color);
+    border:none;
+    min-width: 100px;
+    padding:10px;
+    font-weight: bold;
+    font-size: 1em;
+    transition: 0.5s;
+}
+.tabLink:hover
+{
+    background-color: var(--main-faded-color);
+}
+.tabLink.active
+{
+    background-color: var(--main-color) !important;
+}
+.tabContent.v-enter-from, .tabContent.v-leave-to
+{
+    opacity: 0;
+}
+.tabContent.v-enter-to,.tabContent.v-leave-from
+{
+    opacity: 1;
+}
+.tabContent.v-enter-active, .tabContent.v-leave-active
+{
+    transition: 0.5s;
+}
+/* END CUSTOM TAB */

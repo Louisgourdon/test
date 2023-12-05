@@ -1,0 +1,53 @@
+<form>
+  <mat-form-field class="example-chip-list">
+    <mat-label>Categories</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Category selection">
+      <mat-chip-row *ngFor="let category of selectedCategories" (removed)="remove(category)">
+        {{category}}
+        <button matChipRemove [attr.aria-label]="'remove ' + category">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </mat-chip-grid>
+    <input placeholder="Add Category..." #categoryInput [formControl]="categoryCtrl"
+           [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           (matChipInputTokenEnd)="add($event)"/>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<mat-divider></mat-divider>
+<div *ngFor="let item of feedData" class="rss-item">
+  <mat-card class="rss-card">
+    <mat-card-header>
+      <div mat-card-avatar class="rss-avatar">
+        <mat-icon color="warn">newspaper</mat-icon>
+      </div>
+      <mat-card-title color="primary">{{ item.data.title }}</mat-card-title>
+      <mat-card-subtitle>{{ item.data.creator }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image src="{{ item.data.enclosure.url }}" alt="Image">
+
+    <mat-card-actions>
+      <div class="rss-chip-container">
+        <mat-chip-listbox *ngFor="let tag of item.data.categories">
+          <mat-chip-option color="warn">{{tag}}</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+    </mat-card-actions>
+
+    <mat-card-actions class="item-bottom">
+      <a mat-button href="{{ item.data.link }}" target="_blank" color="primary">Read more</a>
+      <button mat-icon-button color="warn" (click)="toggleFavorite(item)">
+        <mat-icon>{{ isFavorite(item) ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-divider></mat-divider>
+</div>

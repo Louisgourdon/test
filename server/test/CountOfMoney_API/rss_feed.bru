@@ -1,0 +1,24 @@
+meta {
+  name: rss_feed
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseApiUrl}}/news
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isDefined 
+}
+
+tests {
+  //status code test
+  test ("status code test", function() {
+  const data = res.getBody();
+    expect(res.getStatus()).to.equal(200);
+  });
+}

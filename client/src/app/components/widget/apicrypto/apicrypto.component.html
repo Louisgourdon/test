@@ -1,0 +1,27 @@
+<div class="crypto-container">
+  <h1>Informations sur les Crypto-Monnaies</h1>
+  <!-- Champ de recherche -->
+  <input [(ngModel)]="searchQuery" type="text" placeholder="Recherchez une crypto-monnaie">
+  <button (click)="getCryptoData()">Rechercher</button>
+  <div *ngIf="isLoadding">
+    <p>Chargement en cours...</p>
+  </div>
+
+  <!-- Affichage des données -->
+  <div *ngIf="!noDataFound && cryptoData">
+    <h2>Résultats pour: {{ searchQuery | titlecase }}</h2>
+    <div>
+        <p>Prix de {{ searchQuery | titlecase }} en EUR: {{ btcPriceInEUR }} €</p>
+        <p>Prix de {{ searchQuery | titlecase }} en USD: {{ btcPriceInUSD }} $</p>
+    </div>
+</div>
+
+
+  <!-- Gestion de l'absence de données -->
+  <div *ngIf="noDataFound">
+      <p>Aucune donnée trouvée pour '{{ searchQuery }}'.</p>
+  </div>
+</div>
+
+
+<button mat-raised-button color="secondary" routerLink="/">Home</button>

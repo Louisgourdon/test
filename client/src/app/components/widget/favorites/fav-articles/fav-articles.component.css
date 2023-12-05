@@ -1,0 +1,29 @@
+.rss-item {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.rss-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+}
+
+.rss-avatar img {
+  border-radius: 50%;
+}
+
+.rss-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mat-chip-list {
+  margin: 4px;
+}
+
+.item-bottom  {
+  display: flex;
+  justify-content: space-around;
+}

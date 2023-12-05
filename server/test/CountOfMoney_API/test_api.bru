@@ -1,0 +1,24 @@
+meta {
+  name: Test API
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: eq Hello World!
+}
+
+tests {
+  //status code test
+  test ("status code test", function() {
+  const data = res.getBody();
+    expect(res.getStatus()).to.equal(200);
+  });
+}

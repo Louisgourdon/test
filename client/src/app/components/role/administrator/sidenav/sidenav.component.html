@@ -1,0 +1,38 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+    <h2>Dashboard</h2>
+    <mat-list>
+      <button (click)="showDashboard = !showDashboard" mat-button>
+        <mat-list-item>
+          <span matListItemTitle>Users dashboard</span>
+          <span matListItemLine>Manage users dashboard</span>
+        </mat-list-item>
+      </button>
+    </mat-list>
+    <br>
+    <h2>Users Management</h2>
+    <mat-list>
+      <button (click)="showUserManagement = !showUserManagement" mat-button>
+        <mat-list-item>
+          <span matListItemTitle>Database</span>
+          <span matListItemLine>Manage users database</span>
+        </mat-list-item>
+      </button>
+    </mat-list>
+    <br>
+    <h2>Settings</h2>
+    <mat-list>
+      <button mat-button >
+      <mat-list-item>
+        <span matListItemTitle>Account</span>
+        <span matListItemLine>Manage account settings</span>
+      </mat-list-item>
+      </button>
+    </mat-list>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <app-user-management *ngIf="showUserManagement"></app-user-management>
+    <app-admin-dashboard *ngIf="showDashboard"></app-admin-dashboard>
+  </div>
+
+</mat-drawer-container>

@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const authRoutes = require('./src/login/auth');
+require('dotenv').config();
 
 
 
@@ -11,6 +12,7 @@ app.use(cors())
 app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.json())
 app.use(authRoutes);
+app.use('/api', authRoutes);
 
 app.listen(5000, err => {
   console.log("OK Listening")

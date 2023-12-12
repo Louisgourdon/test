@@ -19,4 +19,4 @@ function initializeDb() {
         .catch(err => console.log("Postgres connection error", err));
 }
 
-module.exports = { initializeDb };
+module.exports = { pgClient, initializeDb };

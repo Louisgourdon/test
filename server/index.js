@@ -2,11 +2,15 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const authRoutes = require('./src/login/auth');
+
+
 
 const app = express()
 app.use(cors())
 app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.json())
+app.use(authRoutes);
 
 app.listen(5000, err => {
   console.log("OK Listening")

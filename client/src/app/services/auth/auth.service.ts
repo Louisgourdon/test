@@ -5,16 +5,17 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private registerUrl = 'http://localhost:3000/register';
-  private loginUrl = 'http://localhost:3000/login';
+  private baseUrl = 'http://localhost:5000/api';
+  private registerUrl = `${this.baseUrl}/register`;
+  private loginUrl = `${this.baseUrl}/login`;
 
   constructor(private http: HttpClient) {}
 
-  register(user: any) {
-    return this.http.post<any>(this.registerUrl, user);
+  register(firstName: string, lastName: string, email: string, password: string) {
+    return this.http.post<any>(this.registerUrl, { firstName, lastName, email, password });
   }
 
-  login(user: any) {
-    return this.http.post<any>(this.loginUrl, user);
+  login(email: string, password: string) {
+    return this.http.post<any>(this.loginUrl, { email, password });
   }
 }

@@ -16,13 +16,15 @@ export class RegisterComponent {
   constructor(private authService: AuthService) {}
 
   register() {
+    console.log('Password:', this.password, 'Confirm Password:', this.confirmPassword);
     if (this.password === this.confirmPassword) {
-      this.authService.register(this.first_name, this.last_name, this.email, this.password).subscribe(
-        success => console.log('Registration Successful'),
-        error => console.error(error)
+      this.authService.register(this.first_name, this.last_name, this.email, this.password, this.confirmPassword).subscribe(
+        success => console.log('Registration Successful', success),
+        error => console.error('Registration Error', error)
       );
     } else {
       console.error('Passwords do not match');
     }
   }
+
 }

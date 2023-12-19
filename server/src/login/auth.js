@@ -7,8 +7,12 @@ const { pgClient } = require('../db/pgClient');
 
 
 router.post(`/register`, async (req, res) => {
+
     try {
     const { first_name, last_name, email, password, confirmPassword } = req.body;
+        console.log('Received password:', password, 'Confirm Password:', confirmPassword);
+
+
         if (password !== confirmPassword) {
             return res.status(400).json({ error: "Les mots de passe ne correspondent pas." });
         }
